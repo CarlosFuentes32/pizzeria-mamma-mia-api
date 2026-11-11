@@ -1,10 +1,18 @@
 import cors from "cors";
+import { randomBytes } from "node:crypto";
 import "dotenv/config";
 import express from "express";
 
 import authRoute from "./routes/auth.route.js";
 import checkoutRoute from "./routes/checkout.route.js";
 import pizzaRoute from "./routes/pizza.route.js";
+
+if (!process.env.JWT_SECRET) {
+  process.env.JWT_SECRET = randomBytes(32).toString("hex");
+  console.warn(
+    "JWT_SECRET is not configured; using an ephemeral secret for this process.",
+  );
+}
 
 const app = express();
 

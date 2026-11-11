@@ -14,6 +14,11 @@ npm install
 npm run dev
 ```
 
+Para mantener los tokens válidos entre reinicios, configura `JWT_SECRET` con un valor
+privado en el entorno del servicio. Si la variable no existe, la API genera un secreto
+aleatorio por proceso; esto permite ejecutar la demostración sin publicar credenciales,
+pero invalida los tokens al reiniciar el servidor.
+
 ## Endpoints
 
 ### Pizzas
